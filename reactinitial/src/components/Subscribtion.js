@@ -25,10 +25,10 @@ const Form = () => {
               })
             setTimeout(() => {
                 setLoad(false)
-              }, 3000)
+              }, 2500)
             setTimeout(() => {
                 setIsPending(true)
-              }, 3000)
+              }, 2500)
             setTimeout(() => {
                 setDisapier(false)
               }, 5000)
