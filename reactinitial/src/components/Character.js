@@ -1,27 +1,27 @@
 import { useState} from 'react'
 
-
 const Character = ({name}) => {
 
-    const name3 = name.map(k)
-
-    function k (v){
-        return v.details
-    }
-
-  const [name2, setName] = useState("")
+  const [details, setDetails] = useState(false)
+  const [btnText, setBtntext] = useState("Show details")
 
    const handleClick = () => {
-       setName(name3)
+     if(btnText === "Show details"){
+       setDetails(true)
+       setBtntext("Less details")
+     }else{
+       setDetails(false)
+       setBtntext("Show details")
+     }
    }    
 
     return(
         <div> 
-        {name.map((data)=>(
-            <div>
-              <h3>{data.name}</h3>
-              <h4>{name2}</h4>
-              <button onClick={handleClick}>Show details</button>
+        {name.map((data, index)=>(
+            <div key={index}>
+              <h3 >{data.name}</h3>
+              {details && <h4>{data.details}</h4>}
+              <button onClick={handleClick}>{btnText}</button>
             </div>
 
           ))}

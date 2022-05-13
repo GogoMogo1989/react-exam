@@ -1,7 +1,9 @@
 import { useState } from "react"
 
+
 const Form = () => {
 
+    
     const[email, setEmail] = useState("")
     const[isPending, setIsPending] = useState(false)
     const[form, setForm] = useState(true)
@@ -9,11 +11,11 @@ const Form = () => {
     const[disapier, setDisapier] = useState(true)
 
     const handleSubmit = (e) => {
-        e.preventDefault() //emiatt ha a submutra kattintounk, nem töldőik be az oldal egyből
+        e.preventDefault() 
         
         const data={email}
 
-        fetch('https://demoapi.com/api/series/newsletter', {  //ez a post method pattern
+        fetch('https://demoapi.com/api/series/newsletter', {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(data)
