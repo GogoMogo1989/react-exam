@@ -9,6 +9,7 @@ const Form = () => {
     const[form, setForm] = useState(true)
     const[load, setLoad] = useState(false)
     const[disapier, setDisapier] = useState(true)
+    const [valid, setValid] =useState(false) //email validitása
 
     const handleSubmit = (e) => {
         e.preventDefault() 
@@ -38,6 +39,13 @@ const Form = () => {
     }
 
 
+    const handleInputChange = (e) => {  //email validitása
+        setEmail(e.target.value)
+        if(e.target.value.includes("@") && e.target.value.includes('.')){
+            setValid(true)
+        }
+    }
+
     return(
         <div>
             {disapier && <div>
@@ -46,9 +54,10 @@ const Form = () => {
                 <input 
                         type="text"
                         required
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => {handleInputChange(e)}}
                     />
-                <button>Subscribe</button>
+                {valid ? <button >Subscribe</button> : <button disabled>Subscribe</button>} 
+                
                 </form>}
                 {load && <div>Loading...</div>}
                 {isPending && <div>Subscribed</div>}
